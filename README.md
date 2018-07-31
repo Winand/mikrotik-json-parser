@@ -3,13 +3,18 @@ Based on Chupakabra303's JSON parser for RouterOS.
 
 Usage:
 ```
-# Load library
-/system script run "JParseFunctions"; :global JSONLoads; :global JSONUnload
+# Load library (set library functions to global variables)
+/system script run "JParseFunctions"; global JSONLoad; global JSONLoads; global JSONUnload
 
-# Parse data from `tmp` file and print ParsedResults[0].ParsedText value
-:put ([$JSONLoads [/file get tmp contents]]->"ParsedResults"->0->"ParsedText")
+# Parse data and print `ParsedResults[0].ParsedText` value
+global content "{\"ParsedResults\": [{\"ParsedText\": \"Hello, world!\"}]}"
+put ([$JSONLoads $content]->"ParsedResults"->0->"ParsedText")
+set content
 
-# Unload library
+# or load JSON from file
+put ([$JSONLoad "tmp"]->"ParsedResults"->0->"ParsedText")
+
+# Unload library (clear global variables)
 $JSONUnload
 ```
 
