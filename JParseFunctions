@@ -343,33 +343,42 @@
 }}
 
 # ------------------- Load JSON from arg --------------------------------
-:global JSONLoads
-:if (!any $JSONLoads) do={ :global JSONLoads do={
-    :global JSONIn $1
-    :global fJParse
-    :local ret [$fJParse]
-    :set JSONIn
-    :global Jpos; :set Jpos
-    :global Jdebug; :if (!$Jdebug) do={:set Jdebug}
-    :return $ret
+global JSONLoads
+if (!any $JSONLoads) do={ global JSONLoads do={
+    global JSONIn $1
+    global fJParse
+    local ret [$fJParse]
+    set JSONIn
+    global Jpos; set Jpos
+    global Jdebug; if (!$Jdebug) do={set Jdebug}
+    return $ret
 }}
+
+# ------------------- Load JSON from file --------------------------------
+global JSONLoad
+if (!any $JSONLoad) do={ global JSONLoad do={
+    global JSONLoads
+    return [$JSONLoads [/file get $1 contents]]
+}}
+
 # ------------------- Unload JSON parser library ----------------------
-:global JSONUnload
-:if (!any $JSONUnload) do={ :global JSONUnload do={
-    :global JSONIn; :set JSONIn
-    :global Jpos; :set Jpos
-    :global Jdebug; :set Jdebug
-    :global fByteToEscapeChar; :set fByteToEscapeChar
-    :global fJParse; :set fJParse
-    :global fJParseArray; :set fJParseArray
-    :global fJParseNumber; :set fJParseNumber
-    :global fJParseObject; :set fJParseObject
-    :global fJParsePrint; :set fJParsePrint
-    :global fJParsePrintVar; :set fJParsePrintVar
-    :global fJParseString; :set fJParseString
-    :global fJSkipWhitespace; :set fJSkipWhitespace
-    :global fUnicodeToUTF8; :set fUnicodeToUTF8
-    :global JSONLoads; :set JSONLoads
-    :global JSONUnload; :set JSONUnload
+global JSONUnload
+if (!any $JSONUnload) do={ global JSONUnload do={
+    global JSONIn; set JSONIn
+    global Jpos; set Jpos
+    global Jdebug; set Jdebug
+    global fByteToEscapeChar; set fByteToEscapeChar
+    global fJParse; set fJParse
+    global fJParseArray; set fJParseArray
+    global fJParseNumber; set fJParseNumber
+    global fJParseObject; set fJParseObject
+    global fJParsePrint; set fJParsePrint
+    global fJParsePrintVar; set fJParsePrintVar
+    global fJParseString; set fJParseString
+    global fJSkipWhitespace; set fJSkipWhitespace
+    global fUnicodeToUTF8; set fUnicodeToUTF8
+    global JSONLoads; set JSONLoads
+    global JSONLoad; set JSONLoad
+    global JSONUnload; set JSONUnload
 }}
 # ------------------- End JParseFunctions----------------------
