@@ -357,8 +357,10 @@ if (!any $JSONLoads) do={ global JSONLoads do={
 # ------------------- Load JSON from file --------------------------------
 global JSONLoad
 if (!any $JSONLoad) do={ global JSONLoad do={
-    global JSONLoads
-    return [$JSONLoads [/file get $1 contents]]
+    if ([len [/file find name=$1]] > 0) do={
+        global JSONLoads
+        return [$JSONLoads [/file get $1 contents]]
+    }
 }}
 
 # ------------------- Unload JSON parser library ----------------------
