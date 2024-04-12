@@ -19,7 +19,5 @@ $JSONUnload
 ```
 
 See links below:
-
-http://www.embest.ru/mikrotik/json-parser-script
-
-https://habr.com/post/337978/
+- [Embest: JSON Parser Mikrotik JParse](https://web.archive.org/web/20230530233616/http://www.embest.ru/mikrotik/json-parser-script)
+- [Telegram бот для Mikrotik с Webhook и парсером JSON](https://habr.com/post/337978/)
