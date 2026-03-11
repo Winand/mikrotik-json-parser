@@ -3,7 +3,7 @@ Based on Chupakabra303's JSON parser for RouterOS.
 
 ℹ️Consider using a **much** faster built-in `:deserialize` command.
 
-⚠️As of hAP AC with RouterOS 7.21.3 both solutions are capable of parsing 64KB-1byte of data.
+⚠️As of hAP AC with RouterOS 7.21.3 both solutions are capable of parsing 60KB-1byte of data.
 See also [#1](https://github.com/Winand/mikrotik-json-parser/issues/1).
 
 Usage:
