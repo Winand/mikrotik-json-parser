@@ -1,6 +1,11 @@
 # Mikrotik JSON Parser
 Based on Chupakabra303's JSON parser for RouterOS.
 
+ℹ️Consider using a **much** faster built-in `:deserialize` command.
+
+⚠️As of hAP AC with RouterOS 7.21.3 both solutions are capable of parsing 64KB-1byte of data.
+See also [#1](https://github.com/Winand/mikrotik-json-parser/issues/1).
+
 Usage:
 ```
 # Load library (set library functions to global variables)
@@ -21,7 +26,6 @@ $JSONUnload
 ## Using built-in `:deserialize`
 Since [RouterOS 7.13beta](https://forum.mikrotik.com/t/v7-13beta-testing-is-released/171132)
 Mikrotik made this project obsolete by adding `:serialize` and `:deserialize` commands for converting values to/from JSON.
-
 ```
 # Parse data and print `ParsedResults[0].ParsedText` value
 global content "{\"ParsedResults\": [{\"ParsedText\": \"Hello, world!\"}]}"
